@@ -1,5 +1,5 @@
 
-import Tabs from '@/components/common/Tabs'
+
 import { images } from '@/constants/images/images'
 import Image from 'next/image'
 import OnboardTabs from './OnboardTabs'
