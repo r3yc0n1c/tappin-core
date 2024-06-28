@@ -13,8 +13,10 @@
     "@bogeychan/elysia-logger": "^0.0.22",
     "@elysiajs/cors": "^1.0.2",
     "@elysiajs/swagger": "^1.0.5",
+    "@lucia-auth/adapter-prisma": "^4.0.1",
     "@prisma/client": "^5.16.1",
     "elysia": "latest",
+    "lucia": "^3.2.0",
     "pino-pretty": "^11.2.1",
     "pm2": "^5.4.1"
   },
