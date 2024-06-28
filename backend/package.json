@@ -7,7 +7,8 @@
 		"prod-stop": "pm2 stop tappin-api",
 
     "gen": "bunx prisma generate",
-    "migrate": "bunx prisma migrate dev"
+    "migrate": "bunx prisma migrate dev",
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
@@ -16,7 +17,8 @@
   },
   "devDependencies": {
     "bun-types": "latest",
-    "prisma": "^5.16.1"
+    "prisma": "^5.16.1",
+    "tsx": "^4.15.8"
   },
   "module": "src/index.js"
 }
