@@ -13,4 +13,5 @@ export const images = {
     daemon: "/assets/svgs/daemon.svg",
     here: "/assets/svgs/here.svg",
     rentHome: "/assets/svgs/rent.svg",
+    machineAdd: "/assets/svgs/machineadd.svg",
 };
