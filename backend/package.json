@@ -3,13 +3,17 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "gen": "bunx prisma generate",
+    "migrate": "bunx prisma migrate dev"
   },
   "dependencies": {
+    "@prisma/client": "^5.16.1",
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "prisma": "^5.16.1"
   },
   "module": "src/index.js"
 }
