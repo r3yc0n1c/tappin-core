@@ -9,6 +9,7 @@ import { UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavbarMain from "@/components/common/NavbarMain";
+import Footer from "@/components/common/Footer";
 
 require("@solana/wallet-adapter-react-ui/styles.css");
 
@@ -30,7 +31,9 @@ export default function layout({
                 <WalletProvider wallets={[]} autoConnect>
                     <WalletModalProvider>
                         <NavbarMain />
-                        {children}</WalletModalProvider>
+                        {children}
+                        <Footer />
+                    </WalletModalProvider>
                 </WalletProvider>
             </ConnectionProvider></>
     );
