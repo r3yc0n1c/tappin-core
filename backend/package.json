@@ -3,16 +3,19 @@
   "version": "1.0.50",
   "scripts": {
     "dev": "pm2-dev start src/index.ts",
-		"prod-start": "pm2 start src/index.ts --watch --name tappin-api",
-		"prod-stop": "pm2 stop tappin-api",
-
+    "prod-start": "pm2 start src/index.ts --watch --name tappin-api",
+    "prod-stop": "pm2 stop tappin-api",
     "gen": "bunx prisma generate",
     "migrate": "bunx prisma migrate dev",
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@bogeychan/elysia-logger": "^0.0.22",
+    "@elysiajs/cors": "^1.0.2",
+    "@elysiajs/swagger": "^1.0.5",
     "@prisma/client": "^5.16.1",
     "elysia": "latest",
+    "pino-pretty": "^11.2.1",
     "pm2": "^5.4.1"
   },
   "devDependencies": {
