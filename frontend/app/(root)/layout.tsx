@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useMemo } from "react";
+import React from "react";
 import {
     ConnectionProvider,
     WalletProvider,
@@ -19,15 +19,15 @@ export default function layout({
 }>) {
     const network = WalletAdapterNetwork.Devnet;
 
-    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+    const endpoint = clusterApiUrl(network);
 
-    const wallets = useMemo(() => [], [network]);
+    // const wallets = useMemo(() => [], [network]);
 
     return (
         <>
 
             <ConnectionProvider endpoint={endpoint}>
-                <WalletProvider wallets={wallets} autoConnect>
+                <WalletProvider wallets={[]} autoConnect>
                     <WalletModalProvider>
                         <NavbarMain />
                         {children}</WalletModalProvider>
