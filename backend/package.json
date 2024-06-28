@@ -2,15 +2,18 @@
   "name": "backend",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts",
+    "dev": "pm2-dev start src/index.ts",
+		"prod-start": "pm2 start src/index.ts --watch --name tappin-api",
+		"prod-stop": "pm2 stop tappin-api",
+
     "gen": "bunx prisma generate",
     "migrate": "bunx prisma migrate dev",
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
-    "elysia": "latest"
+    "elysia": "latest",
+    "pm2": "^5.4.1"
   },
   "devDependencies": {
     "bun-types": "latest",
