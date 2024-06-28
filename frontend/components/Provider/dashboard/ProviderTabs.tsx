@@ -35,6 +35,10 @@ export default function ProviderTabs({ onChange, activeIdx }: Props) {
                 onChange(5)
                 setActiveIndex(5)
             }} active={activeIndex === 5 ? true : false} />
+            <ChipsButton content='Your machines' onClick={() => {
+                onChange(6)
+                setActiveIndex(6)
+            }} active={activeIndex === 6 ? true : false} />
         </div>
     )
 }
