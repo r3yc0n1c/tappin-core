@@ -1,4 +1,5 @@
-import ChipsButton from '@/components/common/ChipsButton'
+
+import ChipsButton from '@/components/common/ChipsButton';
 import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
 
@@ -14,7 +15,7 @@ export default function ProviderTabs({ onChange, activeIdx }: Props) {
                 onChange(0);
                 setActiveIndex(0)
             }} active={activeIndex === 0 ? true : false} />
-            <ChipsButton content='Resources' onClick={() => {
+            <ChipsButton content='Earnings Calculate' onClick={() => {
                 onChange(1)
                 setActiveIndex(1)
             }} active={activeIndex === 1 ? true : false} />
