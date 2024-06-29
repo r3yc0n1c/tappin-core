@@ -48,9 +48,12 @@ const GetMachinesByUserId = async ({ params: { userId }, set, db, log }) => {
 	try {
 		const machines = await db.machine.findMany({
 			where: { userId },
+			include: {
+				user: true
+			}
 		});
 
-		set.status = 201;
+		set.status = 200;
 		return machines;
 	} catch (err) {
 		log.error(err);
@@ -61,9 +64,13 @@ const GetMachinesByUserId = async ({ params: { userId }, set, db, log }) => {
 
 const GetAllMachines = async ({ set, db, log }) => {
 	try {
-		const allMachines = await db.machiune.findMany();
+		const allMachines = await db.machine.findMany({
+			include: {
+				user: true
+			}
+		})
 
-		set.status = 201;
+		set.status = 200;
 		return allMachines;
 	} catch (err) {
 		log.error(err);
