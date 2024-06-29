@@ -15,6 +15,7 @@ jobs:
           bun-version: latest
       - name: Backend
         run: |
+          cd backend
           bun install
 
       - name: Deploy
