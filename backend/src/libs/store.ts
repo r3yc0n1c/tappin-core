@@ -8,6 +8,6 @@ const minioClient = new Client({
     secretKey: process.env.MINIO_SECRETKEY!,
 })
 
-const bucketName = process.env.MINIO_BUCKET!;
+const bucketName = process.env.MINIO_BUCKET_NAME!;
 
 export { minioClient, bucketName };

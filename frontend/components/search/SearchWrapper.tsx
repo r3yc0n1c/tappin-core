@@ -5,9 +5,7 @@ import ComputeCard from './cards/ComputeCard'
 
 export default async function SearchWrapper() {
     const machines = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/machine/all`, {
-        next: {
-            revalidate: 3600
-        }
+        cache: 'no-store'
     })).json()
 
     return (

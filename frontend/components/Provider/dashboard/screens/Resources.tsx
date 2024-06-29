@@ -64,7 +64,6 @@ function returnPrice(core: number, ram: number): string[] {
                 return ["0.0832", "0.00585"]
             case 2:
                 return ["0.126", "0.000886"]
-
             default:
                 break;
         }
@@ -76,7 +75,6 @@ function returnPrice(core: number, ram: number): string[] {
                 return ["0.09", "0.000633"]
             case 2:
                 return ["0.136", "0.000956"]
-
             default:
                 break;
         }
