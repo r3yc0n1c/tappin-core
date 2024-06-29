@@ -44,8 +44,36 @@ const CreateMachine = async ({ body, set, db, log }) => {
 	}
 };
 
-const GetMachine = async ({ body, set, db, log, cookie }) => {
-	// TODO
+const GetMachinesByUserId = async ({ params: { userId }, set, db, log }) => {
+	try {
+		const machines = await db.machine.findMany({
+			where: { userId },
+		});
+
+		set.status = 201;
+		return machines;
+	} catch (err) {
+		log.error(err);
+		set.status = 500;
+		return { message: "Internal Server Error" };
+	}
 };
 
-export default { CreateMachine };
+const GetAllMachines = async ({ set, db, log }) => {
+	try {
+		const allMachines = await db.machiune.findMany();
+
+		set.status = 201;
+		return allMachines;
+	} catch (err) {
+		log.error(err);
+		set.status = 500;
+		return { message: "Internal Server Error" };
+	}
+};
+
+export default {
+	CreateMachine,
+	GetAllMachines,
+	GetMachinesByUserId
+};

@@ -23,20 +23,20 @@ machineRoutes
 			tags: ["machine"],
 		},
 	})
-	// .get("/", authController.Login, {
-	// 	body: t.Object(
-	// 		{
-	// 			email: t.String(),
-	// 			password: t.String(),
-	// 		},
-	// 		{
-	// 			description: "Expected email and password",
-	// 		},
-	// 	),
-	// 	detail: {
-	// 		summary: "Login",
-	// 		tags: ["auth"],
-	// 	},
-	// });
+	.get("/all", machineController.GetAllMachines, {
+		detail: {
+			summary: "Get all machines",
+			tags: ["machine"],
+		},
+	})
+	.get("/:userId", machineController.GetMachinesByUserId, {
+		params: t.Object({
+			userId: t.String()
+		}),
+		detail: {
+			summary: "Get all machines bu user id",
+			tags: ["machine"],
+		},
+	})
 
 export default machineRoutes;
