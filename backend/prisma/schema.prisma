@@ -29,6 +29,7 @@ model Machine {
   updatedAt DateTime @updatedAt
   cpu       Int
   ram       Int
+  size      Int
   time      Int
   userId    String
   user      User     @relation(fields: [userId], references: [id])
