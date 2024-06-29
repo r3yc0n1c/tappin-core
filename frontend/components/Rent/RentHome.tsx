@@ -29,7 +29,7 @@ export default function RentHome() {
                         <h2>Rent a machine today</h2>
                         <span className='md:text-xl font-medium opacity-80'><em>Start your journey here!</em></span>
                     </div>
-                    <Button className='offsetstyle flex items-center gap-2 bg-white generalBorder text-black hover:text-white '>Start here! <ChevronRightCircle /></Button>
+                    <Link className='offsetstyle text-sm flex items-center gap-2 bg-white generalBorder text-black hover:text-white ' href="/search">Start here! </Link>
                 </div>
             </div>
             {/* <div style={{ backgroundImage: `url(${images.daemon})`, backgroundRepeat: "no-repeat", backgroundPosition: "90%", }} className='w-full bg-pink-300 my-4 offsetEffect generalBorder flex flex-col gap-4 items-center justify-center'>
