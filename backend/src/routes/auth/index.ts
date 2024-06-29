@@ -11,6 +11,7 @@ authRoutes
 				password: t.String(),
 				name: t.String(),
 				address: t.String(),
+				role: t.String()
 			},
 			{
 				description: "Expected email, password, full name & wallet address",

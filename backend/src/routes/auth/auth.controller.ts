@@ -8,7 +8,7 @@ import {
 
 const SignUp = async ({ body, set, db, log, cookie }) => {
 	try {
-		const { email, password, name, address } = body;
+		const { email, password, name, address, role } = body;
 
 		const existingUser = await db.user.findUnique({
 			where: { email },
@@ -34,7 +34,8 @@ const SignUp = async ({ body, set, db, log, cookie }) => {
 				hashedPassword,
 				passwordSalt,
 				name,
-				address
+				address,
+				role
 			},
 		});
 
