@@ -20,7 +20,7 @@ export default function WalletProv({
 }>) {
     const network = WalletAdapterNetwork.Devnet;
 
-    const endpoint = clusterApiUrl(network);
+    const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
     const wallets = useMemo(() => [
         new PhantomWalletAdapter()
