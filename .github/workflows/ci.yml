@@ -1,0 +1,23 @@
+# .github/workflows/ci.yml
+
+on:
+  pull_request:
+  push:
+    branches: [be-deploy]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Backend
+        run: |
+          bun install
+          npm run test
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/be-deploy'
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          curl "$deploy_url"
