@@ -1,11 +1,8 @@
 "use client";
 import React, { useMemo } from "react";
-import {
-    ConnectionProvider,
-    WalletProvider,
-} from "@solana/wallet-adapter-react";
+import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
-import { PhantomWalletAdapter, UnsafeBurnerWalletAdapter } from "@solana/wallet-adapter-wallets";
+import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
 import NavbarMain from "@/components/common/NavbarMain";
@@ -18,7 +15,7 @@ export default function WalletProv({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const network = WalletAdapterNetwork.Devnet;
+    const network = WalletAdapterNetwork.Testnet;
 
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
@@ -28,7 +25,6 @@ export default function WalletProv({
 
     return (
         <>
-
             <ConnectionProvider endpoint={endpoint}>
                 <WalletProvider wallets={wallets} autoConnect>
                     <WalletModalProvider>

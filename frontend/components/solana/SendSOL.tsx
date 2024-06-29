@@ -35,11 +35,12 @@ export default function SendSOL({ lamps, toKey }: Props) {
       minContextSlot,
     });
 
-    await connection.confirmTransaction({
+    const paymentStatus = await connection.confirmTransaction({
       blockhash,
       lastValidBlockHeight,
       signature,
     });
+    console.log(paymentStatus)
   }, [publicKey, sendTransaction, connection]);
 
   return (
