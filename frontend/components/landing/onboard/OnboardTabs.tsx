@@ -1,10 +1,14 @@
 "use client"
+import { login, signUp } from '@/api-management/api/auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useWallet } from '@solana/wallet-adapter-react'
 import React, { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export default function OnboardTabs() {
+    const { publicKey, sendTransaction } = useWallet();
+
     const [activeTab, setActiveTab] = useState('Login')
     return (
         <div className='md:w-[60%]'>
@@ -21,36 +25,50 @@ export default function OnboardTabs() {
                     <div>
                         <h2 className='font-bold text-3xl'>Login back to your TAppIN account.</h2>
                         <span>use your registered email and password to login</span>
-                        <form action="" className='py-6 flex flex-col gap-3 lg:w-[50%]'>
+                        <form action={(e: FormData) => {
+                            const email = e.get("email")?.toString() ?? "";
+                            const password = e.get("password")?.toString() ?? "";
+
+                            login({ email: email, password: password })
+
+                        }} className='py-6 flex flex-col gap-3 lg:w-[50%]'>
                             <div>
                                 <span className='text-xs'>Enter your email</span>
-                                <Input type='email' placeholder='alandoe@email.com' className='offsetEffect generalBorder ' />
+                                <Input name='email' type='email' placeholder='alandoe@email.com' className='offsetEffect generalBorder ' />
                             </div>
                             <div>
                                 <span className='text-xs'>Enter your password</span>
-                                <Input type='password' placeholder='******' className='offsetEffect generalBorder' />
+                                <Input name='password' type='password' placeholder='******' className='offsetEffect generalBorder' />
                             </div>
                             <span className='text-xs'>
                                 by logging in you agree to our <u>terms and conditions</u>
                             </span>
-                            <Button className='bg-green-400 text-black hover:text-white offsetstyle generalBorder'>Login</Button>
+                            <Button type='submit' className='bg-green-400 text-black hover:text-white offsetstyle generalBorder'>Login</Button>
                         </form>
                     </div>
                     : <div>
                         <h2 className='font-bold text-3xl'>Register a new TAppIN account</h2>
                         <span>create a new account, enter the details below</span>
-                        <form action="" className='py-6 flex flex-col gap-3 lg:w-[50%]'>
+                        <form action={(e: FormData) => {
+                            const email = e.get("email")?.toString() ?? "";
+                            const password = e.get("password")?.toString() ?? "";
+                            const name = e.get("name")?.toString() ?? "";
+
+
+                            signUp({ email: email, password: password, address: publicKey?.toString() ?? "", name: name })
+
+                        }} className='py-6 flex flex-col gap-3 lg:w-[50%]'>
                             <div>
                                 <span className='text-xs'>Enter your email</span>
-                                <Input type='email' placeholder='alandoe@email.com' className='offsetEffect generalBorder ' />
+                                <Input name='email' type='email' placeholder='alandoe@email.com' className='offsetEffect generalBorder ' />
                             </div>
                             <div>
                                 <span className='text-xs'>Enter a username</span>
-                                <Input type='text' placeholder='alandoe123' className='offsetEffect generalBorder ' />
+                                <Input name='name' type='text' placeholder='alandoe123' className='offsetEffect generalBorder ' />
                             </div>
                             <div>
                                 <span className='text-xs'>Create your password</span>
-                                <Input type='password' placeholder='******' className='offsetEffect generalBorder' />
+                                <Input name='password' type='password' placeholder='******' className='offsetEffect generalBorder' />
                             </div>
                             <div>
                                 <span className='text-xs'>Re type your password</span>
@@ -59,7 +77,7 @@ export default function OnboardTabs() {
                             <span className='text-xs'>
                                 by creating a new account  you agree to our <u>terms and conditions</u>
                             </span>
-                            <Button className='bg-orange-400 text-black hover:text-white offsetstyle generalBorder'>Register</Button>
+                            <Button type='submit' className='bg-orange-400 text-black hover:text-white offsetstyle generalBorder'>Register</Button>
                         </form>
                     </div>}
             </div>
