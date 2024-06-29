@@ -10,7 +10,7 @@ export default function Wallet() {
             </div>
             <div className='generalBorder offsetEffect bg-blue-200'>
                 <h2>Send Solana </h2>
-                <SendSOL lamps={200} toKey="wLxz644YCSUfQjrBnce29ZdvmhVGTEoGRVYo3m66GGX" />
+                <SendSOL lamps={200} toKey="AJ59PfYxyeZsxX8h6a2SEsJPC5Rie2HHLkq2vdx5Muk1" />
             </div>
         </div>
     )
