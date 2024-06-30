@@ -27,9 +27,9 @@ export default function HeaderHome() {
                     <div>
                         <h1 className='lg:text-6xl md:text-4xl text-2xl font-bold '>
 
-                            Welcome to TAppIn!™</h1>
+                            Welcome to TAppIN!™</h1>
                         <span className='font-medium
-                        '>This could be the start of something awesome!</span>
+                        '>Decentralized AI training powered by resource-driven computing and secure data sharing.</span>
                     </div>
                     <Image src={images['log-black']} alt='logo' height={90} width={90} className='md:h-[90px] h-[40px] aspect-square md:flex hidden' />
                 </div>

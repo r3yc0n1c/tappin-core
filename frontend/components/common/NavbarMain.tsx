@@ -2,7 +2,7 @@
 import { images } from "@/constants/images/images";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, Wallet2 } from "lucide-react";
 import {
@@ -14,6 +14,15 @@ import dynamic from "next/dynamic";
 
 const NavbarMain = () => {
     const { publicKey } = useWallet();
+    const [data, setData] = useState(localStorage.getItem("user"));
+    useEffect(() => {
+        const dat = localStorage.getItem("user");
+        if (dat === null) {
+            setData(null);
+        } else {
+            setData(dat);
+        }
+    }, [data])
     return (
         <div className="sticky top-4 px-[5%]">
             <nav className="px-[2%] rounded-md offsetEffect bg-[#b3a2e5]  py-2 border border-black flex justify-between items-center">
@@ -37,7 +46,7 @@ const NavbarMain = () => {
                         asChild
                         className="bg-white border hover:text-white border-black ml-2 text-black rounded-md offsetstyle"
                     >
-                        <Link href="/onboard">Sign in</Link>
+                        {data === null && <Link href="/onboard">Sign in</Link>}
                     </Button>
                     {publicKey ? (
                         <Button className="relative offsetEffect bg-red-400 generalBorder text-black hover:text-white">

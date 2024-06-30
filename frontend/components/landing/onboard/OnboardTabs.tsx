@@ -3,6 +3,7 @@ import { login, signUp } from '@/api-management/api/auth'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useWallet } from '@solana/wallet-adapter-react'
+import { redirect } from 'next/navigation'
 import React, { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -30,6 +31,8 @@ export default function OnboardTabs() {
                             const password = e.get("password")?.toString() ?? "";
 
                             login({ email: email, password: password })
+                            localStorage.setItem("user", "data");
+                            redirect("/rent")
 
                         }} className='py-6 flex flex-col gap-3 lg:w-[50%]'>
                             <div>

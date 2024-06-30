@@ -13,7 +13,7 @@ export default function HeaderFAQ() {
                     answer="We are a DEEPIN network that provide with "
                 />
                 <Accordion
-                    question="What are thr charges for renting a machine"
+                    question="What are the charges for renting a machine"
                     answer="It depends on the compute you are receiving from the provider. A Provider with higher computer will charge more than a one with lower. We try to keep the prices as reasonable as possible"
                 />
             </div>
