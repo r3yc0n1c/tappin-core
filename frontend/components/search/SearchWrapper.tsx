@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 import ComputeCard from './cards/ComputeCard'
 
 export default async function SearchWrapper() {
-    const machines = await (await fetch(`${process.env.NEXT_PUBLIC_API_URL}/machine/all`, {
+    const machines = await (await fetch("https://tappin-api.onrender.com/machine/all", {
         cache: 'no-store'
     })).json()
 

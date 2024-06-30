@@ -1,5 +1,6 @@
 import ChipsButton from '@/components/common/ChipsButton'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link';
 import React, { useState } from 'react'
 
 interface Props {
@@ -22,6 +23,7 @@ export default function RentTabs({ onChange, activeIdx }: Props) {
                 onChange(2)
                 setActiveIndex(2)
             }} active={activeIndex === 2 ? true : false} />
+            <Link className='offsetstyle bg-white p-2 border border-black rounded-md' href="/search">All machines</Link>
             {/* <ChipsButton content='Wallet' onClick={() => {
                 onChange(3)
                 setActiveIndex(3)

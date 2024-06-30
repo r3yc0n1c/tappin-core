@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@solana/pay": "^0.2.5",
     "@solana/wallet-adapter-base": "^0.9.23",

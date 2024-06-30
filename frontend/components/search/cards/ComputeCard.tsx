@@ -7,6 +7,18 @@ import { Button } from '@/components/ui/button';
 import { SpecsCard } from '@/constants/images/models/specscard.model'
 import { Rocket } from 'lucide-react';
 import bs58 from 'bs58';
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import dynamic from "next/dynamic";
+import { Input } from '@/components/ui/input';
+import { useState } from 'react';
+
 
 interface Props {
     props: SpecsCard;
@@ -31,7 +43,10 @@ const memo = 'Solana Pay Public Memo'
 
 
 
-export default function ComputeCard({ props }: Props) {
+const ComputeCard = ({ props }: Props) => {
+    const [model, setModel] = useState<File | null>(null);
+    const [ds, setDs] = useState<File | null>(null);
+    const [req, setReq] = useState<File | null>(null);
 
     const { publicKey } = useWallet()
 
@@ -123,6 +138,11 @@ export default function ComputeCard({ props }: Props) {
             console.error(err)
         }
     }
+    function upload() {
+        fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_model`)
+        fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_dataset`)
+        fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_requirements`)
+    }
 
 
     return (
@@ -150,8 +170,62 @@ export default function ComputeCard({ props }: Props) {
                 </div>
             </div>
             <div className='pt-2'>
-                <Button className='generalBorder flex items-center gap-2 offsetstyle w-full'>Launch <Rocket size={15} /></Button>
+                <Dialog>
+                    <DialogTrigger className='generalBorder flex items-center gap-2 w-full offsetstyle bg-white justify-center'>  Launch <Rocket size={15} /></DialogTrigger>
+                    <DialogContent className='bg-white offsetEffect generalBorder'>
+                        <DialogHeader>
+                            <DialogTitle>Launch machine</DialogTitle>
+                            <DialogDescription>
+                                Add your files to start working!
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div>
+                            <div className='grid grid-cols-2 gap-2'>
+                                <div className='flex flex-col '>
+                                    <span className='text-xs text-gray-600'>Device name</span>
+                                    <h1 className='text-xl font-medium'>{props.title}</h1>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <span className='text-xs text-gray-600'>Available CPU</span>
+                                    <h1 className='text-xl font-medium'>{props.cpu}</h1>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <span className='text-xs text-gray-600'>Available RAM</span>
+                                    <h1 className='text-xl font-medium'>{props.ram}GB</h1>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <span className='text-xs text-gray-600'>Available space</span>
+                                    <h1 className='text-xl font-medium'>{props.storage}GB</h1>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <span className='text-xs text-gray-600'>Instances</span>
+                                    <h1 className='text-xl font-medium'>{props?.activity}</h1>
+                                </div>
+                            </div>
+                            <div className='flex flex-col gap-2 py-4 text-sm'>
+                                <span>Upload the following files to get started</span>
+                                <div>
+                                    <span>Model file (model.py)</span>
+                                    <Input type='file' onChange={(e) => setModel(e.target.files ? e.target.files[0] : null)} />
+                                </div>
+                                <div>
+                                    <span>Dataset (dataset.csv)</span>
+                                    <Input type='file' onChange={(e) => setDs(e.target.files ? e.target.files[0] : null)} />
+                                </div>
+                                <div>
+                                    <span>Requirements (requirements.txt)</span>
+                                    <Input type='file' onChange={(e) => setReq(e.target.files ? e.target.files[0] : null)} />
+                                </div>
+                                <Button onClick={(() => {
+                                    upload();
+                                })}>Start</Button>
+                            </div>
+                        </div>
+                    </DialogContent>
+                </Dialog>
+
             </div>
         </div>
     )
 }
+export default dynamic(() => Promise.resolve(ComputeCard), { ssr: false })
