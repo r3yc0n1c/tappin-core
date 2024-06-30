@@ -38,7 +38,7 @@ To deploy the frontend run
 
 #### Auth Sign Up
 
-```http
+```
   POST /auth/sign-up
 ```
 
@@ -52,7 +52,7 @@ To deploy the frontend run
 
 #### Auth Login
 
-```http
+```
   POST /auth/login
 ```
 
@@ -63,7 +63,7 @@ To deploy the frontend run
 
 #### Create Machine
 
-```http
+```
   POST /machine/create
 ```
 
@@ -78,7 +78,7 @@ To deploy the frontend run
 
 #### Storing Data
 
-```http
+```
   GET /store/presigned-url
 ```
 
