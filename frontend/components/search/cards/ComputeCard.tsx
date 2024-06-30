@@ -5,7 +5,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import BigNumber from 'bignumber.js';
 import { Button } from '@/components/ui/button';
 import { SpecsCard } from '@/constants/images/models/specscard.model'
-import { Rocket } from 'lucide-react';
+import { Download, Rocket } from 'lucide-react';
 import bs58 from 'bs58';
 import {
     Dialog,
@@ -47,6 +47,7 @@ const ComputeCard = ({ props }: Props) => {
     const [model, setModel] = useState<File | null>(null);
     const [ds, setDs] = useState<File | null>(null);
     const [req, setReq] = useState<File | null>(null);
+    const [dis, setDis] = useState(true);
 
     const { publicKey } = useWallet()
 
@@ -139,6 +140,7 @@ const ComputeCard = ({ props }: Props) => {
         }
     }
     function upload() {
+        setDis(false);
         fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_model`)
         fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_dataset`)
         fetch(`https://tappin-api.onrender.com/store/presigned-url?name=${props.id}_requirements`)
@@ -219,6 +221,7 @@ const ComputeCard = ({ props }: Props) => {
                                 <Button onClick={(() => {
                                     upload();
                                 })}>Start</Button>
+                                <Button disabled={dis} ><a href="/src/contractor.py">Download contractor</a> <Download /> </Button>
                             </div>
                         </div>
                     </DialogContent>

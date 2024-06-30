@@ -35,9 +35,9 @@ export default function ProviderHome() {
             </div>
             <div style={{ backgroundImage: `url(${images.daemon})`, backgroundRepeat: "no-repeat", backgroundPosition: "90%", }} className='w-full bg-yellow-300 my-4 offsetEffect generalBorder flex flex-col gap-4 items-center justify-center'>
                 <Download size={30} />
-                <h2 className='text-3xl font-bold'>Download the TAppIN daemon now!</h2>
+                <h2 className='text-3xl font-bold'>Download the TAppIN provider script</h2>
                 <span className='text-center max-w-[50%]'>The TAppIN daemon allows your device to share your resources for the AI training. This daemon runs in background and allocates the required resources for the processes.</span>
-                <Button className='offsetstyle flex items-center gap-2 bg-white generalBorder text-black hover:text-white '>Download Daemon<Download /></Button>
+                <Button className='offsetstyle bg-white generalBorder text-black hover:text-white '><a className=' flex items-center gap-2' href="/src/provider.py">Download script<Download /></a></Button>
             </div>
         </div>
     )
