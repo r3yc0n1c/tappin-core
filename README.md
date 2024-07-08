@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/r3yc0n1c/sacred-swap"><img src="https://github.com/r3yc0n1c/tappin-core/assets/57730879/3dc302dd-f62e-48f6-9e36-ca0d87de112a" alt="Sacred Swap" width="200"></a>
+  <a href="https://github.com/r3yc0n1c/tappin-core"><img src="https://github.com/r3yc0n1c/tappin-core/assets/57730879/3dc302dd-f62e-48f6-9e36-ca0d87de112a" alt="Tappin Logo" width="200"></a>
   <br>
   TAppIN
   <br>
